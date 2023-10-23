@@ -1,5 +1,7 @@
-import streamlit
 
+pip install -r requirements.txt
+
+import streamlit
 
 streamlit.title('My Parents New Healthy Diner')
 
