@@ -1,10 +1,6 @@
 # requirements.txt
 snowflake-connector-python
-import streamlit
-import pandas
-import requests
-import snowflake.connector
-
+pandas
+requests
 streamlit==1.25.0
-
 pyarrow==10.0.1
