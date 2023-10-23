@@ -5,15 +5,12 @@ import snowflake.connector
 from urllib.error import URLError
 
 streamlit.title('My Parents New Healthy Diner')
-
 streamlit.header('Breakfast Menu')
 streamlit.text('🥣Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
 streamlit.text('🐔 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Smashed avocado toast')
-
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
-
 
 # import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
@@ -25,7 +22,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
-
 
 #create the repeatble code block (called a function)
 def get_fruityvice_data(this_fruit_choice):
@@ -42,14 +38,11 @@ try:
   else:
     back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
-
 except URLError as e:
   streamlit.error()
 
 #import snowflake.connector
 
-
-add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 
 streamlit.header("The fruit load list contains")
 #Snowflake related functions
@@ -66,7 +59,7 @@ if streamlit.button('Get Fruit Load List'):
 
 # Allow the end user to add a fruit to the lsit
 def insert_row_snowflake(new_fruit):
-  with my_cnx.curso() as my_cur:
+  with my_cnx.cursor() as my_cur:
     my_cur.execute("Insert into fruit_load_list_values ('from streamlit')")
     return "Thanks for adding " + new_fruit
 
